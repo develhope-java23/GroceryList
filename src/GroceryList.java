@@ -1,25 +1,37 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class GroceryList {
 
-    private List<GroceryListItem> items;
+    private HashMap<String, GroceryListItem> items;
 
-    public GroceryList () {
-        this.items = new ArrayList<>();
+    public GroceryList() {
+        this.items = new HashMap<>();
     }
 
-    public List<GroceryListItem> getItems() {
+    public HashMap<String, GroceryListItem> getItems() {
         return items;
     }
 
-    public void addItem (String name, int quantity) {
-        for (GroceryListItem item : items) {
-            if (name.equals(item.getName())) {
-                item.setQuantity(item.getQuantity() + quantity);
-                return;
+    public void addItem(String name, String brand, int quantity) {
+
+        GroceryListItem item = items.get(name);
+
+        if (item == null) {
+            items.put(name, new GroceryListItem(brand, quantity));
+        } else {
+            item.setQuantity(item.getQuantity() + quantity);
+        }
+    }
+
+    public int totalQuantityOfSpecificBrand (String brand){
+        int result=0;
+        for(GroceryListItem item : items.values()) {
+            if (brand.equals(item.getBrand())){
+                result += item.getQuantity();
             }
         }
-        items.add(new GroceryListItem(name, quantity));
+        return result;
     }
 }

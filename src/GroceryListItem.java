@@ -1,16 +1,16 @@
 public class GroceryListItem {
 
-    private String name;
+    private String brand;
 
     private int quantity;
 
-    public GroceryListItem (String name, int quantity) {
-        this.name = name;
+    public GroceryListItem(String brand, int quantity) {
+        this.brand = brand;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public String getBrand() {
+        return brand;
     }
 
     public int getQuantity() {
