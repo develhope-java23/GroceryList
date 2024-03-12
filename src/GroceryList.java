@@ -44,5 +44,12 @@ public class GroceryList {
         }
         return counter;
     }
+    public int getTotalQuantity(){
+        int result = 0 ;
+        for(GroceryListItem item : items.values()){
+            result += item.getQuantity();
+        }
+        return result ;
+    }
 
 }
