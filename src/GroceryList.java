@@ -25,13 +25,24 @@ public class GroceryList {
         }
     }
 
-    public int totalQuantityOfSpecificBrand (String brand){
-        int result=0;
-        for(GroceryListItem item : items.values()) {
-            if (brand.equals(item.getBrand())){
+    public int totalQuantityOfSpecificBrand(String brand) {
+        int result = 0;
+        for (GroceryListItem item : items.values()) {
+            if (brand.equals(item.getBrand())) {
                 result += item.getQuantity();
             }
         }
         return result;
     }
+
+    public int countByString(String element) {
+        int counter = 0;
+        for (String item : items.keySet()) {
+            if (item.contains(element)) {
+                counter += items.get(item).getQuantity();
+            }
+        }
+        return counter;
+    }
+
 }
